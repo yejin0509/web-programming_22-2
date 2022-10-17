@@ -1,4 +1,5 @@
 const addButton = document.querySelector('#add_folder');
+var value = 320;
 // function dele(text, newListItem) {
 //   console.log(text);
 //   window.localStorage.removeItem(text);
@@ -28,9 +29,8 @@ for (var i = 0; i < localStorage.length; ++i){
   const btnDelete = document.createElement("button");
   list.appendChild(btnDelete);
 
-
-    //"❌" 버튼을 누르면 삭제되게 만든다.
-    btnDelete.textContent = "❌ ";
+    btnDelete.classList.add('btn');
+    btnDelete.textContent = "❌";
     btnDelete.addEventListener('click', function() {
       console.log(text);
       window.localStorage.removeItem(text);
@@ -72,6 +72,7 @@ addButton.addEventListener('click', () => {
 
 
     //"❌" 버튼을 누르면 삭제되게 만든다.
+    btnDelete.classList.add('btn'); 
     btnDelete.textContent = "❌";
     btnDelete.addEventListener('click', function() {
       console.log(text);

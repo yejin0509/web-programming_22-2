@@ -153,3 +153,9 @@ p{
     display: flex;
     justify-content: space-between;
 }
+
+.btn{
+    top: -38px;
+    left: 1080px;
+    position: relative;
+}
