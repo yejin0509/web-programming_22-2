@@ -46,7 +46,7 @@ h1 {
     margin-top: 20px;
 }
 
-/* 제목 디자인 */
+/* 폴더명 디자인 */
 #folder_title{
     border: 2px solid black;    
     border-radius: 5px;
@@ -69,7 +69,9 @@ input::placeholder{
     margin-right: 7px;
 }
 
-/* 일기내용 디자인 */
+
+
+/* 디자인 */
 #today{
     width: 600px;
     height: 350px;
@@ -88,13 +90,15 @@ textarea{
     padding: 5px;
 }
 p{
+    font-weight: bold;
     margin-bottom: 5px;
 }
 
-/* 보내기 버튼 디자인*/
+/* 생성 버튼 디자인*/
 #add_folder{
+    font-weight: bold;
     margin-top: 30px;
-    font-family: "gmedium";
+    font-family: "gbold";
     border-radius: 5px;
     padding: 8px 20px 6px 20px;
     background-color: white;
@@ -144,37 +148,37 @@ p{
     list-style: none;
 }
 
-.list-item {
+.list_item {
     font-weight: 700;
-    border-bottom: 1px solid #eaeaea;
+    border-bottom: 1px solid #A6A6A5;
     margin-right: 32px;
     padding-top: 20px;
     padding-bottom: 16px;
     font-size: 14px;
 }
 
-.sub-list-item {
+.sub-list_item {
     font-weight: 200;
     margin-right: 32px;
     padding-top: 5px;
     font-size: 14px;
     list-style: none;
 }
-.sub-list-item-ul{
+.sub-list_item-ul{
     margin-bottom: 40px;
 }
-.sub-list-item-ul li{
+.sub-list_item-ul li{
     list-style:none;
     margin-top: 10px;
 }
-.sub-list-item-ul li::before{
+.sub-list_item-ul li::before{
     content: "- ";
     
 }
 
 .btndel{
     top: -38px;
-    left: 93%;
+    left: 0%;
     position: relative;
     border: none;
 }
@@ -186,7 +190,7 @@ p{
 }
 .btnplus{
     top: -38px;
-    left: 92%;
+    left: 0%;
     position: relative;
     border: none;
 }
