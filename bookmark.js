@@ -44,12 +44,16 @@ for (var i = 0; i < localStorage.length; ++i){              //localStorage for�
         
       }
       else{
+        var TitleUrl = prompt('타이틀을 입력하세요.');
+        alert(TitleUrl);
+        
         localStorage.setItem(inputUrl, text);  //localStorage에 대입하여 새로고침하더라도 정보 저장
+        localStorage.setItem(TitleUrl, inputUrl);  //localStorage에 대입하여 새로고침하더라도 정보 저장
 
         const listsub = document.querySelector(classname);
         const SubName = document.createElement('li');
         SubName.classList.add('sub-list_item');
-        SubName.innerHTML = "<a href = '"+inputUrl+"'target='_blank'>"+inputUrl+"</a>";
+        SubName.innerHTML = "<a href = '"+inputUrl+"'target='_blank'>"+TitleUrl+"</a>";
         listsub.appendChild(SubName);
 
         const subbtnDel = document.createElement("button");
@@ -59,6 +63,7 @@ for (var i = 0; i < localStorage.length; ++i){              //localStorage for�
 
         subbtnDel.addEventListener('click', function() {
           window.localStorage.removeItem(inputUrl);               //localStorage에 삭제하고자하는 url key 삭제
+          window.localStorage.removeItem(TitleUrl);               //localStorage에 삭제하고자하는 url TitleUrl 삭제
           subbtnDel.parentNode.removeChild(subbtnDel);            //subbtnDel 삭제
           SubName.parentNode.removeChild(SubName);                //li 삭제
 
@@ -78,6 +83,9 @@ for (var i = 0; i < localStorage.length; ++i){              //localStorage for�
       keyarr.push(a);
     }
   }
+
+
+
   //url 화면 표기
   console.log(keyarr);
   if(keyarr != undefined){
@@ -87,29 +95,41 @@ for (var i = 0; i < localStorage.length; ++i){              //localStorage for�
       const Memo = localStorage.getItem(Mkey);
       console.log(Memo);
       console.log(keyarr.length, j)
-      if(Memo==texting){
-        console.log("turn "+ Mkey);
-        const listsub = document.querySelector(classnaming);
-        const SubName = document.createElement('li');
-        SubName.classList.add('sub-list_item');
-        SubName.innerHTML = "<a href = '"+Mkey+"'target='_blank'>"+Mkey+"</a>";
-        listsub.appendChild(SubName);
-  
-        const subbtnDel = document.createElement("button");
-        listsub.appendChild(subbtnDel);
-        subbtnDel.classList.add('subbtndel');
-        subbtnDel.textContent = "❌";
-  
-        subbtnDel.addEventListener('click', function() {
-          window.localStorage.removeItem(Mkey);               
-          subbtnDel.parentNode.removeChild(subbtnDel);        
-          SubName.parentNode.removeChild(SubName);            
+      //url 불러오기
+      if(Memo==texting){                                        
+        for(var t = 0; t < localStorage.length; ++t){           
+          const Tkey = localStorage.key(t);
+          const TMemo = localStorage.getItem(Tkey);
+          
+          if(Mkey==TMemo){                                      
+            console.log("turn "+ Mkey);
+            const listsub = document.querySelector(classnaming);
+            const SubName = document.createElement('li');
+            SubName.classList.add('sub-list_item');
+            SubName.innerHTML = "<a href = '"+Mkey+"'target='_blank'>"+Tkey+"</a>";
+            listsub.appendChild(SubName);
+      
+            const subbtnDel = document.createElement("button");
+            listsub.appendChild(subbtnDel);
+            subbtnDel.classList.add('subbtndel');
+            subbtnDel.textContent = "❌";
+      
+            subbtnDel.addEventListener('click', function() {
+              window.localStorage.removeItem(Mkey);              
+              window.localStorage.removeItem(Tkey);               
+              subbtnDel.parentNode.removeChild(subbtnDel);        
+              SubName.parentNode.removeChild(SubName);        
+            });
+        
+        
+            
 
-        });
+        
+          }
+        }
       }
     }
   }
-}
 }
 
 //폴더 생성 버튼
@@ -123,7 +143,7 @@ addBtn.addEventListener('click', () => {
       input.focus();
     }
   });
-
+}
 
 //폴더 생성 버튼 클릭 시
   function addToList(text) {
